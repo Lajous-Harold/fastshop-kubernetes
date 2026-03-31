@@ -28,7 +28,7 @@ export default function ProductsPage({
             <img src={product.image_url} alt={product.name} />
             <div className="product-card-body">
               <h3>{product.name}</h3>
-              <p className="price">{product.price.toFixed(2)} EUR</p>
+              <p className="price">{Number(product.price).toFixed(2)} EUR</p>
             </div>
             <div className="product-card-actions">
               <Link to={`/products/${product.id}`} className="btn btn-link">

@@ -5,7 +5,9 @@ const router = Router();
 
 router.get("/", async (_req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM products ORDER BY id");
+    const result = await pool.query(
+      "SELECT id, name, description, price::float, image_url, stock, created_at FROM products ORDER BY id"
+    );
     res.json(result.rows);
   } catch (err) {
     console.error("Failed to fetch products:", err);
@@ -15,9 +17,10 @@ router.get("/", async (_req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM products WHERE id = $1", [
-      req.params.id,
-    ]);
+    const result = await pool.query(
+      "SELECT id, name, description, price::float, image_url, stock, created_at FROM products WHERE id = $1",
+      [req.params.id]
+    );
     if (result.rows.length === 0) {
       res.status(404).json({ error: "Product not found" });
       return;

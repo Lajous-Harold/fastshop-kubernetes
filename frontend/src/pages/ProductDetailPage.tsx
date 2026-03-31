@@ -36,7 +36,7 @@ export default function ProductDetailPage({
         <img src={product.image_url} alt={product.name} />
         <div className="product-detail-info">
           <h1>{product.name}</h1>
-          <p className="price">{product.price.toFixed(2)} EUR</p>
+          <p className="price">{Number(product.price).toFixed(2)} EUR</p>
           <p>{product.description}</p>
           <p className="stock">Stock : {product.stock} disponible(s)</p>
           <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>

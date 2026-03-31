@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/health", healthRouter);
+app.use("/api/health", healthRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/cart", cartRouter);
 
